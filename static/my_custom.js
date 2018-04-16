@@ -31,9 +31,11 @@ $(document).ready(function() {
           data: form_data,
           success: function (responce) {
               if (responce == 'error') {
-                  alert("Could not login!");
+                  // alert("Could not login!");
+                  $("#error").removeAttr("hidden")
               }else {
                   console.log("Loged in as ", responce);
+                  $("#success").removeAttr("hidden")
               }
               // console.log(responce)
           }
