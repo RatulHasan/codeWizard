@@ -1,0 +1,43 @@
+<style>
+.form-registration {
+  width: 100%;
+  max-width: 550px;
+  padding: 15px;
+  margin: 0 auto;
+}
+</style>
+<div class="col-md-12 form-registration">
+    <fieldset>
+        <h2>Register form</h2>
+        <form id="registration-form">
+          <div class="form-group">
+            <label for="first_name" class="bmd-label-floating">First name</label>
+            <input type="text" class="form-control" name="first_name" id="first_name" />
+          </div>
+          <div class="form-group">
+            <label for="last_name" class="bmd-label-floating">Last name</label>
+            <input type="text" class="form-control" name="last_name" id="last_name" />
+          </div>
+          <div class="form-group">
+            <label for="username" class="bmd-label-floating">Username</label>
+            <input type="text" class="form-control" name="username" id="username" />
+          </div>
+          <div class="form-group">
+            <label for="email" class="bmd-label-floating">Email address</label>
+            <input type="email" class="form-control" name="email" id="email" >
+            <span class="bmd-help">We'll never share your email with anyone else.</span>
+          </div>
+          <div class="form-group">
+            <label for="password" class="bmd-label-floating">Password</label>
+            <input type="password" class="form-control" name="password" id="password">
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="t&c" id="t&c"> Terms & conditions apply
+            </label>
+          </div>
+          <a href="/register" class="btn btn-danger btn-raised">Cancel</a>
+          <button type="submit" class="btn btn-primary btn-raised">Submit</button>
+        </form>
+    </fieldset>
+</div>

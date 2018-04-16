@@ -1,0 +1,25 @@
+<style>
+.form-signin {
+  width: 100%;
+  max-width: 550px;
+  padding: 15px;
+  margin: 0 auto;
+}
+</style>
+<div class="col-md-12">
+    <fieldset>
+        <h2 class=" text-center">Login form</h2>
+        <form id="login-form" class="form-signin">
+          <div class="form-group">
+            <label for="username" class="bmd-label-floating">Username</label>
+            <input type="text" class="form-control" name="username" id="username" />
+          </div>
+          <div class="form-group">
+            <label for="password" class="bmd-label-floating">Password</label>
+            <input type="password" class="form-control" name="password" id="password">
+          </div>
+          <a href="/login" class="btn btn-danger btn-raised">Cancel</a>
+          <button type="submit" class="btn btn-primary btn-raised">Login</button>
+        </form>
+    </fieldset>
+</div>
