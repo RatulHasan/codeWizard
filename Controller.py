@@ -1,17 +1,25 @@
 import web
+
 from Models import RegisterModel
+
+web.config.debug = False
 
 urls = (
     '/', 'Index',
     '/register', 'Register',
     '/login', 'Login',
     '/login-check', 'CheckLogin',
+    '/logout', 'Logout',
     '/save-user-registration', 'SaveUserRegistration',
 )
 
 app = web.application(urls, globals())
 
-render = web.template.render('Views/templates/', base='main_layout')
+session = web.session.Session(app, web.session.DiskStore("session"), initializer={'user': 'none'})
+session_data = session._initializer
+
+
+render = web.template.render('Views/templates/', base='main_layout', globals= {"session": session_data, 'current_user': session_data['user']})
 
 
 class Index:
@@ -31,9 +39,16 @@ class CheckLogin:
         isUser = reg_model.check_login(data)
 
         if isUser:
+            session_data['user'] = isUser
             return isUser
         else:
             return "error"
+
+
+class Logout:
+    def GET(self):
+        session.kill()
+        return "Success"
 
 
 class Register:
