@@ -35,28 +35,29 @@ $def with(all_post)
                                 <button id="post-button" class="btn btn-info btn-raised" type="submit"><span class="mdi mdi-send"></span> Post </button>
                             </form>
                         </div>
-                    $for post in all_post:
-                    <div class="card">
-                      <div class="card-header">
-                        $post['username']
-                      </div>
-                      <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">
-                            $post['post_content']
-                        </p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                      </div>
-                        <div class="card-footer">
-                            <button type="button" class="btn btn-primary bmd-btn-fab-sm">
-                                <i class="material-icons">grade</i>
-                            </button>
-                            <button type="button" class="btn btn-primary bmd-btn-fab-sm">
-                                <i class="material-icons">grade</i>
-                            </button>
+                        $for post in all_post:
+                        <div class="card">
+                          <div class="card-header">
+                            $post['username']
+                          </div>
+                          <div class="card-body">
+                            <h5 class="card-title">Special title treatment</h5>
+                            <p class="card-text">
+                                $post['post_content']
+                            </p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                          </div>
+                            <div class="card-footer">
+                                <button type="button" class="btn btn-primary bmd-btn-fab-sm">
+                                    <i class="material-icons">grade</i>
+                                </button>
+                                <button type="button" class="btn btn-primary bmd-btn-fab-sm">
+                                    <i class="material-icons">grade</i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            </div>
+
 </div>
