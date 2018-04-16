@@ -24,7 +24,6 @@ $(document).ready(function() {
 
         var form_data = $("#login-form").serialize();
 
-        console.log(form_data);
         $.ajax({
           type: "POST",
           url: '/login-check',
@@ -55,4 +54,26 @@ $(document).ready(function() {
           }
         });
     });
+
+
+    $("#post-activity").on('submit',function (e) {
+        e.preventDefault();
+
+        var form_data = $("#post-activity").serialize();
+        $.ajax({
+          type: "POST",
+          url: '/save-post-activity',
+          data: form_data,
+          success: function (responce) {
+              if (responce === 'error') {
+                  $("#post-error").removeAttr("hidden")
+              }else {
+                  $("#post-success").removeAttr("hidden");
+                  window.location.href = '/'
+              }
+              // console.log(responce)
+          }
+        });
+    });
+
 });

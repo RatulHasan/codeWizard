@@ -8,12 +8,12 @@ class RegisterModel:
     def __init__(self):
         self.myClient = MongoClient()
         self.db = self.myClient.codeWizard
+        self.users = self.db.users
 
     def insert_user(self, data):
         hashed = bcrypt.hashpw(data.password.encode(), bcrypt.gensalt())
         data.password = hashed
         print("data is", data)
-        self.users = self.db.users
         self.users.insert_one(data)
 
         # if bcrypt.checkpw( '123456'.encode(), data.password):

@@ -1,4 +1,62 @@
-$if session['user'] != None:
-    <h1>Hello $session['user']['username']!</h1>
-$else:
-    <h1>Hello there!</h1>
+$def with(all_post)
+<div class="container">
+    $if session['user'] == None:
+        <h1>Hello there!</h1>
+    $else:
+        <h1>Hello $session['user']['username']!</h1>
+            <div class="row">
+                <div class="col-md-3">
+                    <ul class="sidebar">
+                        <li class="active"><a href="#"><span class="mdi mdi-home"></span> Home feed </a> </li>
+                        <li><a href="#"><span class="mdi mdi-account-circle"></span> Profile </a> </li>
+                        <li><a href="#"><span class="mdi mdi-email"></span> Messages </a> </li>
+                        <li><a href="#"><span class="mdi mdi-google-circles-group"></span> Friends </a> </li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <div class="col-md-12">
+                        <div class="alert alert-success alert-dismissible fade show" hidden id="post-success" role="alert">
+                          <strong>Success!</strong> you're now loged in.
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="alert alert-warning alert-dismissible fade show" hidden id="post-error" role="alert">
+                          <strong>Sorry!</strong> Error occurred.
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="post-box">
+                            <form id="post-activity">
+                                <div class="form-group">
+                                    <textarea name="post_content" class="form-control post-input" placeholder="What's new $session['user']['username']?" id="post_content" rows="3"></textarea>
+                                </div>
+                                <button id="post-button" class="btn btn-info btn-raised" type="submit"><span class="mdi mdi-send"></span> Post </button>
+                            </form>
+                        </div>
+                    $for post in all_post:
+                    <div class="card">
+                      <div class="card-header">
+                        $post['username']
+                      </div>
+                      <div class="card-body">
+                        <h5 class="card-title">Special title treatment</h5>
+                        <p class="card-text">
+                            $post['post_content']
+                        </p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                      </div>
+                        <div class="card-footer">
+                            <button type="button" class="btn btn-primary bmd-btn-fab-sm">
+                                <i class="material-icons">grade</i>
+                            </button>
+                            <button type="button" class="btn btn-primary bmd-btn-fab-sm">
+                                <i class="material-icons">grade</i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+</div>
