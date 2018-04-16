@@ -30,11 +30,27 @@ $(document).ready(function() {
           url: '/login-check',
           data: form_data,
           success: function (responce) {
-              if (responce == 'error') {
+              if (responce === 'error') {
                   $("#error").removeAttr("hidden")
               }else {
                   $("#success").removeAttr("hidden");
                   window.location.href = '/'
+              }
+          }
+        });
+    });
+
+    $("#logout-btn").on('click',function (e) {
+        e.preventDefault();
+
+        $.ajax({
+          type: "GET",
+          url: '/logout',
+          success: function (responce) {
+              if (responce === 'success') {
+                  window.location.href = '/login';
+              }else {
+                  alert("Something went wrong!")
               }
           }
         });

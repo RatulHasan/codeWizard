@@ -50,8 +50,11 @@ $def with(page)
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-          <a class="btn btn-success" href="/login">Login</a> &nbsp; &nbsp;
-          <a class="btn btn-outline-info btn-raised" href="/register">Register</a>
+            $if session['user'] != None:
+                <a class="btn btn-success" id="logout-btn" href="/logout">Logout</a> &nbsp; &nbsp;
+            $else:
+                <a class="btn btn-success" href="/login">Login</a> &nbsp; &nbsp;
+                <a class="btn btn-outline-info btn-raised" href="/register">Register</a>
         </form>
       </div>
     </nav>
