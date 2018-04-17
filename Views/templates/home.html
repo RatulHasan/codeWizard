@@ -4,19 +4,28 @@ $def with(all_post)
         <h1>Hello there!</h1>
     $else:
         <h1>Hello $session['user']['username']!</h1>
+
             <div class="row">
                 <div class="col-md-3">
-                    <ul class="sidebar">
-                        <li class="active"><a href="#"><span class="mdi mdi-home"></span> Home feed </a> </li>
-                        <li><a href="#"><span class="mdi mdi-account-circle"></span> Profile </a> </li>
-                        <li><a href="#"><span class="mdi mdi-email"></span> Messages </a> </li>
-                        <li><a href="#"><span class="mdi mdi-google-circles-group"></span> Friends </a> </li>
-                    </ul>
+                    <div class="card">
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><a href="#"><span class="mdi mdi-home"></span> Home feed </a> </li>
+                        <li class="list-group-item"><a href="#"><span class="mdi mdi-account-circle"></span> Profile </a> </li>
+                        <li class="list-group-item"><a href="#"><span class="mdi mdi-email"></span> Messages </a> </li>
+                        <li class="list-group-item"><a href="#"><span class="mdi mdi-google-circles-group"></span> Friends </a> </li>
+                      </ul>
+                    </div>
+                    <!--<ul class="sidebar">-->
+                        <!--<li class="list-group-item"><a href="#"><span class="mdi mdi-home"></span> Home feed </a> </li>-->
+                        <!--<li class="list-group-item"><a href="#"><span class="mdi mdi-account-circle"></span> Profile </a> </li>-->
+                        <!--<li class="list-group-item"><a href="#"><span class="mdi mdi-email"></span> Messages </a> </li>-->
+                        <!--<li class="list-group-item"><a href="#"><span class="mdi mdi-google-circles-group"></span> Friends </a> </li>-->
+                    <!--</ul>-->
                 </div>
                 <div class="col-md-6">
                     <div class="col-md-12">
                         <div class="alert alert-success alert-dismissible fade show" hidden id="post-success" role="alert">
-                          <strong>Success!</strong> you're now loged in.
+                          <strong>Success!</strong> post saved.
                           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
@@ -27,35 +36,45 @@ $def with(all_post)
                             <span aria-hidden="true">&times;</span>
                           </button>
                         </div>
-                        <div class="post-box">
-                            <form id="post-activity">
-                                <div class="form-group">
-                                    <textarea name="post_content" class="form-control post-input" placeholder="What's new $session['user']['username']?" id="post_content" rows="3"></textarea>
+
+                        <form id="post-activity">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="post-box">
+                                        <div class="md-form form-group">
+                                        <textarea name="post_content" class="form-control" placeholder="What's new $session['user']['username']?" id="post_content" rows="3"></textarea>
+                                        </div>
+
+                                    </div>
                                 </div>
-                                <button id="post-button" class="btn btn-info btn-raised" type="submit"><span class="mdi mdi-send"></span> Post </button>
-                            </form>
-                        </div>
-                        $for post in all_post:
-                        <div class="card">
-                          <div class="card-header">
-                            $post['username']
-                          </div>
-                          <div class="card-body">
-                            <h5 class="card-title">Special title treatment</h5>
-                            <p class="card-text">
-                                $post['post_content']
-                            </p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                          </div>
-                            <div class="card-footer">
-                                <button type="button" class="btn btn-primary bmd-btn-fab-sm">
-                                    <i class="material-icons">grade</i>
-                                </button>
-                                <button type="button" class="btn btn-primary bmd-btn-fab-sm">
-                                    <i class="material-icons">grade</i>
-                                </button>
+                                <div class="card-footer pull-right">
+                                    <button id="post-button" class="btn btn-info btn-raised" type="submit"><span class="mdi mdi-send"></span> Post </button>
+                                </div>
                             </div>
-                        </div>
+                        </form>
+                        $for post in all_post:
+
+                            <div class="card">
+                              <div class="card-header">
+                                <strong>$post['username']</strong>
+                                  <div>$post['timestamp']</div>
+                              </div>
+                              <div class="card-body">
+                                <h5 class="card-title"></h5>
+                                <p class="card-text">
+                                    $post['post_content']
+                                </p>
+                              </div>
+                                <div class="card-footer">
+                                    <button type="button" class="btn btn-primary">
+                                        <i class="material-icons">grade</i>
+                                    </button>
+                                    <button type="button" class="btn btn-primary bmd-btn-fab-sm">
+                                        <i class="material-icons">grade</i>
+                                    </button>
+                                </div>
+                            </div>
+                            <br>
                     </div>
                 </div>
             </div>

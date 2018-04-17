@@ -14,7 +14,9 @@ $(document).ready(function() {
           url: '/save-user-registration',
           data: form_data,
           success: function (responce) {
-              console.log(responce);
+              if(responce) {
+                  window.location.href = '/login';
+              }
           }
         });
     });

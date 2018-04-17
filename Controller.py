@@ -2,6 +2,8 @@ import web
 
 from Models import RegisterModel, PostsModel
 
+import datetime
+
 web.config.debug = False
 
 urls = (
@@ -26,16 +28,19 @@ render = web.template.render('Views/templates/', base='main_layout', globals= {"
 
 class Index:
     def GET(self):
-        data = type('obj', (object,), {"username": "ratul", "password": "123456"})
-        reg_model = RegisterModel.RegisterModel()
-        isUser = reg_model.check_login(data)
+        # data = type('obj', (object,), {"username": "ratul", "password": "123456"})
+        # reg_model = RegisterModel.RegisterModel()
+        # isUser = reg_model.check_login(data)
+        #
+        # if isUser:
+        #     session_data['user'] = isUser
+        #     post_model = PostsModel.PostsModel()
+        #     new_post = post_model.all_post(session_data['user']['username'])
 
-        if isUser:
-            session_data['user'] = isUser
-            post_model = PostsModel.PostsModel()
-            all_post = post_model.all_post(session_data['user']['username'])
+        post_model = PostsModel.PostsModel()
+        new_post = post_model.all_post()
 
-        return render.home(all_post)
+        return render.home(new_post)
 
 
 class Login:
@@ -75,7 +80,7 @@ class SaveUserRegistration:
         data = web.input()
         reg_model = RegisterModel.RegisterModel()
         reg_model.insert_user(data)
-        return data.username
+        return True
 
 
 class SavePostActivity:
@@ -83,6 +88,7 @@ class SavePostActivity:
         data = web.input()
         data.user_id = session_data['user']['_id']
         data.username = session_data['user']['username']
+        data.created_on = datetime.datetime.now()
         try:
             post_model = PostsModel.PostsModel()
             post_model.insert_post(data)
